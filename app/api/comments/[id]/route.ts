@@ -1,5 +1,5 @@
 import { comments } from "../data";
-
+import { redirect } from "next/navigation";
 
 export async function GET(
   _request: Request, { params }: { params: {id: string}}
@@ -12,6 +12,7 @@ export async function GET(
       },
       status: 400,
     });
+    // redirect("/api/comments"); // not optimal since client is looking for a response aand not redirects
   }
   return Response.json(comment)
 }
